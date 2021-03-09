@@ -1,0 +1,22 @@
+{
+  "name": "vue-cli-plugin-auto-commitlint",
+  "version": "0.9.22",
+  "description": "自动规范提交工具插件",
+  "main": "index.js",
+  "scripts": {
+    "log": "conventional-changelog --config ./generator/template/changelog -i CHANGELOG.md -s -r 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:mayako21126/auto-commitlint.git"
+  },
+  "author": "mayako",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayako21126/auto-commitlint/issues"
+  },
+  "homepage": "https://github.com/mayako21126/auto-commitlint#readme",
+  "devDependencies": {
+    "standard-version": "^9.1.1"
+  }
+}

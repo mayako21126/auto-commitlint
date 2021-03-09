@@ -1,0 +1,67 @@
+{{#if scope}} {{scope}} |
+{{~else}} - |
+{{~/if}} {{#if subject}}
+  {{~subject}}
+{{~else}}
+ {{~header}}
+{{~/if}}
+ |
+{{~!-- commit link --}} {{#if @root.linkReferences~}}
+  [{{hash}}](
+  {{~#if @root.repository}}
+    {{~#if @root.host}}
+      {{~@root.host}}/
+    {{~/if}}
+    {{~#if @root.owner}}
+      {{~@root.owner}}/
+    {{~/if}}
+    {{~@root.repository}}
+  {{~else}}
+    {{~@root.repoUrl}}
+  {{~/if}}/
+  {{~@root.commit}}/{{hash}}) {{~this.gitUserInfo}}
+{{~else}}
+  {{~hash}}
+{{~/if}} 
+
+{{! commit references }}
+{{~#if references~}}
+  , closes
+  {{~#each references}}
+    {{#if @root.linkReferences~}}
+      [
+      {{~#if this.owner}}
+        {{~this.owner}}/
+      {{~/if}}
+      {{~this.repository}}#{{this.issue}}](
+      {{~#if @root.packageData.bugs.url}}
+        {{~@root.packageData.bugs.url}}/{{this.issue}})
+      {{~else}}
+        {{~#if @root.repository}}
+          {{~#if @root.host}}
+            {{~@root.host}}/
+          {{~/if}}
+          {{~#if this.repository}}
+            {{~#if this.owner}}
+              {{~this.owner}}/
+            {{~/if}}
+            {{~this.repository}}
+          {{~else}}
+            {{~#if @root.owner}}
+              {{~@root.owner}}/
+            {{~/if}}
+            {{~@root.repository}}
+          {{~/if}}
+        {{~else}}
+          {{~@root.repoUrl}}
+        {{~/if}}/{{~@root.issue}}/{{this.issue}})
+      {{~/if}}
+    {{~else}}
+      {{~#if this.owner}}
+        {{~this.owner}}/
+      {{~/if}}
+      {{~this.repository}}#{{this.issue}}
+    {{~/if}}
+  {{/each}}
+{{~/if}}
+
